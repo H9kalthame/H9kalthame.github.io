@@ -183,13 +183,16 @@
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
+            .home-content {
+                padding: 2rem 1rem;
             }
 
-            .menu-items {
-                flex-direction: column;
-                align-items: center;
+            .home-content h1 {
+                font-size: 2rem;
+            }
+
+            .home-content p {
+                font-size: 1rem;
             }
 
             .about-content {
@@ -200,14 +203,6 @@
             .proj-1 {
                 flex-direction: column;
                 text-align: center;
-            }
-
-            .home-content h1 {
-                font-size: 2rem;
-            }
-
-            .home-content p {
-                font-size: 1rem;
             }
         }
     </style>
@@ -220,21 +215,21 @@
     <header class="header">
         <nav class="navbar">
             <div class="navbar-brand">Hisham Alshehri</div>
-            <ul class="menu-items" role="menu">
-                <li role="menuitem"><a href="#about">About</a></li>
-                <li role="menuitem"><a href="#experience">Experience</a></li>
-                <li role="menuitem"><a href="#education">Education</a></li>
-                <li role="menuitem"><a href="#skills">Skills</a></li>
-                <li role="menuitem"><a href="#certificates">Certificates</a></li>
-                <li role="menuitem"><a href="#portfolio">Portfolio</a></li>
-                <li role="menuitem"><a href="#contact-me">Contact</a></li>
+            <ul class="menu-items">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact-me">Contact</a></li>
             </ul>
         </nav>
         <div class="home-content" id="home-page">
             <h1>Hi, I'm Hisham.</h1>
             <p>A highly motivated and skilled IT fresh graduate seeking a challenging role.</p>
             <div class="angle-down-icon">
-                <a href="#about" aria-label="Scroll down to About section"><i class="fas fa-angle-down"></i></a>
+                <a href="#about"><i class="fas fa-angle-down"></i></a>
             </div>
         </div>
     </header>
@@ -322,7 +317,8 @@
                         <div class="proj1-details">
                             <h2>Predicting House Prices Project</h2>
                             <p>Using Machine Learning</p>
-                            <button><a href="posters v4.pdf" target="_blank">View Source <i class="fas fa-external-link-alt"></i></a></button>
+                            <button><a href="posters v4.pdf" target="_blank">View Source <i
+                                class="fas fa-external-link-alt"></i></a></button>
                         </div>
                     </div>
                 </div>
