@@ -181,7 +181,23 @@
         .contact-content a:hover {
             color: #ff6347;
         }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4ca1af;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s;
+        }
 
+        .scroll-to-top:hover {
+            background: #2c3e50;
+        }
+        
         @media (max-width: 768px) {
             .home-content {
                 padding: 2rem 1rem;
@@ -209,6 +225,30 @@
     <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                // Scroll to Top functionality
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        $('.scroll-to-top').fadeIn();
+                    } else {
+                        $('.scroll-to-top').fadeOut();
+                    }
+                });
+    
+                $('.scroll-to-top').click(function () {
+                    $('html, body').animate({ scrollTop: 0 }, 800);
+                    return false;
+                });
+    
+                // Animate skill bars
+                $('.skill-bar .skill div').each(function () {
+                    $(this).animate({
+                        width: $(this).attr('data-percent')
+                    }, 2000);
+                });
+            });
+        </script>
 </head>
 
 <body>
@@ -346,7 +386,9 @@
             </div>
         </section>
     </main>
-
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
     <script src="java.js"></script>
 </body>
 
