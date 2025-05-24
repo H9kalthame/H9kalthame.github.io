@@ -181,6 +181,7 @@
         .contact-content a:hover {
             color: #ff6347;
         }
+
         .scroll-to-top {
             position: fixed;
             bottom: 20px;
@@ -197,7 +198,7 @@
         .scroll-to-top:hover {
             background: #2c3e50;
         }
-        
+
         @media (max-width: 768px) {
             .home-content {
                 padding: 2rem 1rem;
@@ -221,34 +222,45 @@
                 text-align: center;
             }
         }
+
+        /* New feature: highlight menu item on scroll */
+        .menu-items a.active {
+            color: #ff6347;
+            border-bottom: 2px solid #ff6347;
+        }
     </style>
     <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function () {
-                // Scroll to Top functionality
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 100) {
-                        $('.scroll-to-top').fadeIn();
-                    } else {
-                        $('.scroll-to-top').fadeOut();
+    <script>
+        $(document).ready(function () {
+            // Highlight active menu item on scroll
+            $(window).on("scroll", function () {
+                let scrollPos = $(document).scrollTop();
+                $('.menu-items a').each(function () {
+                    let section = $($(this).attr('href'));
+                    if (section.length && section.offset().top <= scrollPos + 100 && section.offset().top + section.height() > scrollPos) {
+                        $('.menu-items a').removeClass("active");
+                        $(this).addClass("active");
                     }
                 });
-    
-                $('.scroll-to-top').click(function () {
-                    $('html, body').animate({ scrollTop: 0 }, 800);
-                    return false;
-                });
-    
-                // Animate skill bars
-                $('.skill-bar .skill div').each(function () {
-                    $(this).animate({
-                        width: $(this).attr('data-percent')
-                    }, 2000);
-                });
             });
-        </script>
+
+            // Scroll to Top functionality
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scroll-to-top').fadeIn();
+                } else {
+                    $('.scroll-to-top').fadeOut();
+                }
+            });
+
+            $('.scroll-to-top').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -281,8 +293,7 @@
                     <img src="personal photo..jpg" alt="Hisham Alshehri">
                     <p>
                         IT professional with experience in technical support and system troubleshooting, seeking to contribute my skills to enhance
-IT operations and provide effective solutions in a dynamic environment.
-
+                        IT operations and provide effective solutions in a dynamic environment.
                     </p>
                 </div>
             </div>
@@ -303,7 +314,9 @@ IT operations and provide effective solutions in a dynamic environment.
                             <li>- Monitor ticket resolution times to ensure compliance with Service Level Agreement( SLA).</li>
                             <li>- Manage and track IT inventory, ensuring proper allocation and maintenance of equipment.</li>
                             <li>- Guide users on how to use software, applications effectively.</li>
+                        </ul>
                     </li>
+                    <li>
                         <h2>Technical Support Specialist at Megamind IT Solutions</h2>
                         <p>Dec 2023 – Present</p>
                         <ul>
@@ -411,5 +424,4 @@ IT operations and provide effective solutions in a dynamic environment.
     </div>
     <script src="java.js"></script>
 </body>
-
 </html>
