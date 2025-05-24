@@ -199,6 +199,50 @@
             background: #2c3e50;
         }
 
+        @media (max-width: 900px) {
+            .menu-items {
+                flex-direction: column;
+                background: #2c3e50;
+                position: absolute;
+                right: 0;
+                top: 60px;
+                width: 200px;
+                display: none;
+                z-index: 1000;
+            }
+            .menu-items.show {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .navbar {
+                position: relative;
+            }
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #fff;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.4s;
+        }
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         @media (max-width: 768px) {
             .home-content {
                 padding: 2rem 1rem;
@@ -222,12 +266,17 @@
                 text-align: center;
             }
         }
-
         /* New feature: highlight menu item on scroll */
         .menu-items a.active {
             color: #ff6347;
             border-bottom: 2px solid #ff6347;
         }
+        /* داكن للوضع الليلي */
+        body.dark-mode { background: #181818 !important; color: #eee !important; }
+        body.dark-mode section { background: #252525 !important; color: #eee !important; }
+        body.dark-mode .navbar, body.dark-mode .header { background: #181818 !important; color: #fff !important; }
+        body.dark-mode .scroll-to-top, body.dark-mode #toggle-dark { background: #222 !important; color: #fff !important; }
+        body.dark-mode .proj1-details button { background: #181818 !important; color: #fff !important; border:1px solid #fff;}
     </style>
     <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -259,6 +308,35 @@
                 $('html, body').animate({ scrollTop: 0 }, 800);
                 return false;
             });
+
+            // Hamburger menu
+            $('#hamburger-menu').on('click', function () {
+                $('.menu-items').toggleClass('show');
+            });
+            $('.menu-items a').on('click', function () {
+                if (window.innerWidth < 900) {
+                    $('.menu-items').removeClass('show');
+                }
+            });
+
+            // Fade in sections on scroll
+            function showOnScroll() {
+                $('.fade-section').each(function () {
+                    var sectionTop = $(this).offset().top;
+                    var scroll = $(window).scrollTop();
+                    var windowHeight = $(window).height();
+                    if (sectionTop < scroll + windowHeight - 100) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+            showOnScroll();
+            $(window).on('scroll', showOnScroll);
+
+            // Dark mode toggle
+            $('#toggle-dark').on('click', function() {
+                $('body').toggleClass('dark-mode');
+            });
         });
     </script>
 </head>
@@ -268,10 +346,10 @@
         <nav class="navbar">
             <div class="navbar-brand">Hisham Alshehri</div>
             <div class="hamburger" id="hamburger-menu">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-</div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
             <ul class="menu-items">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -291,7 +369,7 @@
     </header>
 
     <main>
-        <section class="about-me" id="about">
+        <section class="about-me fade-section" id="about">
             <div class="container">
                 <h1 class="about-heading">About Me</h1>
                 <div class="about-content">
@@ -304,7 +382,7 @@
             </div>
         </section>
 
-        <section id="experience">
+        <section id="experience" class="fade-section">
             <div class="container">
                 <h1>Experience</h1>
                 <ul>
@@ -345,7 +423,7 @@
             </div>
         </section>
 
-        <section id="education">
+        <section id="education" class="fade-section">
             <div class="container">
                 <h1>Education</h1>
                 <p>Jun 2023 </p>
@@ -354,7 +432,7 @@
             </div>
         </section>
 
-        <section id="skills">
+        <section id="skills" class="fade-section">
             <div class="container">
                 <h1>Skills & Abilities</h1>
                 <ul>
@@ -363,7 +441,7 @@
                     <li>- Understanding of basic networking concepts, including TCP/IP, DNS, DHCP, and VPN configurations.</li>
                 </ul>
             </div>
-            <section id="certificates">
+            <section id="certificates" class="fade-section">
                 <div class="container">
                     <h1>Certificates</h1>
                     <ul>
@@ -389,9 +467,9 @@
                 </div>
             </section>
     
-            <section id="Project">
+            <section id="Project" class="fade-section">
 
-<section id="Project">
+<section id="Project" class="fade-section">
 <div class="container">
     <h1>Graduation Project</h1>
     <div class="Project-content">
@@ -409,7 +487,7 @@
 
         </section>
 
-        <section class="contact" id="contact-me">
+        <section class="contact fade-section" id="contact-me">
             <div class="container">
                 <div class="contact-content">
                     <h2>Contact Me</h2>
@@ -427,6 +505,4 @@
     <div class="scroll-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
-    <script src="java.js"></script>
-</body>
-</html>
+    <button id="toggle-dark" style="position:fixed;bottom:80px;right:20px;z-index:1001;background:#
