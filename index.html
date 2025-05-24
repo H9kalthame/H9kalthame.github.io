@@ -11,33 +11,244 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
-        /* محتوى الستـايل كما هو، ما تغيّر */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .menu-items {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .menu-items a:hover {
+            color: #ff6347;
+        }
+
+        .home-content {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .home-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .home-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .angle-down-icon a {
+            color: white;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .angle-down-icon a:hover {
+            color: #ff6347;
+        }
+
+        section {
+            padding: 3rem 2rem;
+            background-color: white;
+            margin: 1rem 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-heading,
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-content img {
+            width: 150px;
+            border-radius: 50%;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        .proj-1 {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .proj-1 img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+
+        .proj1-details {
+            max-width: 600px;
+        }
+
+        .proj1-details button {
+            background: #4ca1af;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .proj1-details button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .proj1-details button:hover {
+            background: #2c3e50;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content p {
+            margin: 1rem 0;
+        }
+
+        .contact-content a {
+            display: inline-block;
+            margin: 0.5rem;
+            color: #2f9e9c;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-content a:hover {
+            color: #ff6347;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4ca1af;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: background 0.3s;
+        }
+
+        .scroll-to-top:hover {
+            background: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .home-content {
+                padding: 2rem 1rem;
+            }
+
+            .home-content h1 {
+                font-size: 2rem;
+            }
+
+            .home-content p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .proj-1 {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
     </style>
     <script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function () {
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 100) {
-                    $('.scroll-to-top').fadeIn();
-                } else {
-                    $('.scroll-to-top').fadeOut();
-                }
+        <script>
+            $(document).ready(function () {
+                // Scroll to Top functionality
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() > 100) {
+                        $('.scroll-to-top').fadeIn();
+                    } else {
+                        $('.scroll-to-top').fadeOut();
+                    }
+                });
+    
+                $('.scroll-to-top').click(function () {
+                    $('html, body').animate({ scrollTop: 0 }, 800);
+                    return false;
+                });
+    
+                // Animate skill bars
+                $('.skill-bar .skill div').each(function () {
+                    $(this).animate({
+                        width: $(this).attr('data-percent')
+                    }, 2000);
+                });
             });
-
-            $('.scroll-to-top').click(function () {
-                $('html, body').animate({ scrollTop: 0 }, 800);
-                return false;
-            });
-
-            $('.skill-bar .skill div').each(function () {
-                $(this).animate({
-                    width: $(this).attr('data-percent')
-                }, 2000);
-            });
-        });
-    </script>
+        </script>
 </head>
 
 <body>
@@ -70,7 +281,8 @@
                     <img src="personal photo..jpg" alt="Hisham Alshehri">
                     <p>
                         IT professional with experience in technical support and system troubleshooting, seeking to contribute my skills to enhance
-                        IT operations and provide effective solutions in a dynamic environment.
+IT operations and provide effective solutions in a dynamic environment.
+
                     </p>
                 </div>
             </div>
@@ -91,9 +303,7 @@
                             <li>- Monitor ticket resolution times to ensure compliance with Service Level Agreement( SLA).</li>
                             <li>- Manage and track IT inventory, ensuring proper allocation and maintenance of equipment.</li>
                             <li>- Guide users on how to use software, applications effectively.</li>
-                        </ul>
                     </li>
-                    <li>
                         <h2>Technical Support Specialist at Megamind IT Solutions</h2>
                         <p>Dec 2023 – Present</p>
                         <ul>
@@ -135,47 +345,50 @@
                     <li>- Understanding of basic networking concepts, including TCP/IP, DNS, DHCP, and VPN configurations.</li>
                 </ul>
             </div>
-        </section>
-
-        <!-- فصل الشهادات عن المهارات -->
-        <section id="certificates">
-            <div class="container">
-                <h1>Certificates</h1>
-                <ul>
-                    <li>
-                        <h2>CompTIA A+</h2>
-                        <p>Issued: Aug 2024</p>
-                        <button><a href="CompTIA A+ ce certificate.pdf">View Source <i class="fas fa-external-link-alt"></i></a></button>
-                    </li>
-                    <li>
-                        <h2>Google Data Analytics Professional Certificate by Google (8 courses)</h2>
-                        <p>Issued: Jun 2023</p>
-                        <button><a href="C:\Users\hshoo\Desktop\My website\V.2 files\CompTIA A+ ce certificate.pdf" target="_blank">View Source <i class="fas fa-external-link-alt"></i></a></button>
-                    </li>
-                    <li>
-                        <h2>Saudi Council of Engineers Membership</h2>
-                        <p>Issued: Dec 2024</p>
-                        <button><a href="Saudi Council of Engineers Certificate[13534].pdf">View Source <i class="fas fa-external-link-alt"></i></a></button>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- إزالة التكرار في معرف Project -->
-        <section id="Project">
-            <div class="container">
-                <h1>Graduation Project</h1>
-                <div class="Project-content">
-                    <div class="proj-1">
-                        <img src="logo.png" alt="Project Image" loading="lazy">
-                        <div class="proj1-details">
-                            <h2>Predicting House Prices Project</h2>
-                            <p>Using Machine Learning</p>
-                            <button><a href="posters v4.pdf" target="_blank">View Source <i class="fas fa-external-link-alt"></i></a></button>
-                        </div>
-                    </div>
+            <section id="certificates">
+                <div class="container">
+                    <h1>Certificates</h1>
+                    <ul>
+                        <li>
+                            <h2>CompTIA A+</h2>
+                            <p>Issued: Aug 2024</p>
+                            <button><a href="CompTIA A+ ce certificate.pdf">View Source <i
+                                class="fas fa-external-link-alt"></i></a></button>
+                        </li>
+                        <li>
+                            <h2>Google Data Analytics Professional Certificate by Google (8 courses)</h2>
+                            <p>Issued: Jun 2023</p>
+                            <button><a href="C:\Users\hshoo\Desktop\My website\V.2 files\CompTIA A+ ce certificate.pdf"target="_blank">View Source <i
+                                class="fas fa-external-link-alt"></i></a></button>
+                        </li>
+                        <li>
+                             <h2>Saudi Council of Engineers Membership</h2>
+                            <p>Issued: Dec 2024</p>
+                            <button><a href="Saudi Council of Engineers Certificate[13534].pdf">View Source <i
+                                class="fas fa-external-link-alt"></i></a></button>
+                        </li>
+                    </ul>
                 </div>
+            </section>
+    
+            <section id="Project">
+
+<section id="Project">
+<div class="container">
+    <h1>Graduation Project</h1>
+    <div class="Project-content">
+        <div class="proj-1">
+            <img src="logo.png" alt="Project Image" loading="lazy">
+            <div class="proj1-details">
+                <h2>Predicting House Prices Project</h2>
+                <p>Using Machine Learning</p>
+                <button><a href="posters v4.pdf"target="_blank">View Source <i
+                            class="fas fa-external-link-alt"></i></a></button>
             </div>
+        </div>
+    </div>
+</div>
+
         </section>
 
         <section class="contact" id="contact-me">
@@ -184,18 +397,18 @@
                     <h2>Contact Me</h2>
                     <p class="mail">Contact me at <i class="fas fa-arrow-right"></i> hisham.kalthame@gmail.com</p>
                     <p class="links">Or find me on:</p>
-                    <a href="https://www.linkedin.com/in/hisham-alshehri-0a0a23169/?trk=public-profile-join-page" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/H9kalthame" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="https://wa.me/+966504830157" target="_blank"><i class="fab fa-whatsapp"></i> +966504830157</a>
+                    <a href="https://www.linkedin.com/in/hisham-alshehri-0a0a23169/?trk=public-profile-join-page"
+                        target="_blank" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/H9kalthame" target="_blank" aria-label="GitHub profile"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://wa.me/+966504830157" target="_blank" aria-label="WhatsApp contact"><i
+                            class="fab fa-whatsapp"></i> +966504830157</a>
                 </div>
             </div>
         </section>
     </main>
-
     <div class="scroll-to-top">
         <i class="fas fa-arrow-up"></i>
     </div>
-
     <script src="java.js"></script>
 </body>
 
