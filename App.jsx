@@ -426,7 +426,7 @@ function App() {
                 <CardContent className="p-8">
                   <Linkedin className="h-12 w-12 text-blue-600 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">LinkedIn</h3>
-                  <a href="https://linkedin.com/in/hisham-alshehri" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 transition-colors">
+                  <a href="https://www.linkedin.com/in/hisham-alshehrii/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 transition-colors">
                     Hisham Alshehri
                   </a>
                 </CardContent>
@@ -435,7 +435,7 @@ function App() {
 
             <div className="text-center mt-12">
               <div className="flex justify-center space-x-6">
-                <a href="https://linkedin.com/in/hisham-alshehri" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors">
+                <a href="https://www.linkedin.com/in/hisham-alshehrii/" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors">
                   <Linkedin className="h-8 w-8" />
                 </a>
                 <a href="https://github.com/h9kalthame" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 transition-colors">
