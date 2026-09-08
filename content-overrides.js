@@ -4,6 +4,7 @@
     ['IT professional with experience in technical support and system troubleshooting, seeking to contribute my skills to enhance IT operations and provide effective solutions in a dynamic environment.', 'I work in L2 IT support and IT operations, handling technical issues, tickets, escalations, and day-to-day support across clinics and pharmacies. I am building my networking skills while also developing toward senior roles in IT Service Management.'],
     ['Jeddah, Saudi Arabia', 'Saudi Arabia'],
     ['95%', '90%'],
+    ['100%', '90%'],
     ['IT Support Specialist', 'IT Engineering Specialist'],
     ['Collaborate with the IT team to implement and support new software deployments and upgrades', 'Provide L2 support across clinics and pharmacies for hardware, software, network, and business application issues'],
     ['Provide training and support to end-users on new technologies and systems to enhance productivity', 'Support users and field IT teams remotely and on-site, and escalate complex incidents when needed'],
